@@ -154,6 +154,9 @@ alias sp='sprintly'
 # spb = sprintly branch - create a branch automatically based on the bug you're working on
 alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A-Za-z0-9 ]//g' | sed 's/ /-/g' | cut -d"-" -f1,2,3,4,5\`"
 
+# items zsh incorrectly tries to autocorrect
+alias htop='nocorrect htop'
+
 # ssh shortcuts
 alias ghee='ssh matt@dev.datasplice.com -p 2222'
 alias urethra='ssh matt@192.168.0.2'

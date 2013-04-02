@@ -1,0 +1,8 @@
+" colorscheme torte
+" background for git gutter looks bad by default
+highlight SignColumn ctermbg=233 guibg=#073642
+highlight Search guibg=#268bd2
+
+" get page up/down keys working again
+unmap <C-F>
+unmap <C-B>

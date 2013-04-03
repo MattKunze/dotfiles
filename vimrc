@@ -57,7 +57,7 @@ set undofile
 " ================ Indentation ======================
 
 set autoindent
-set smartindent
+"set smartindent
 set smarttab
 set shiftwidth=2
 set softtabstop=2
@@ -98,6 +98,7 @@ set wildignore+=*.png,*.jpg,*.gif
 
 " ================ Scrolling ========================
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
+"set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+"set sidescrolloff=15
+"set sidescroll=1
+

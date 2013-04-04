@@ -162,8 +162,8 @@ map <silent> <D-9> :tabn 9<cr>
 " Create window splits easier. The default
 " way is Ctrl-w,v and Ctrl-w,s. I remap
 " this to vv and ss
-nnoremap <silent> vv <C-w>v
-nnoremap <silent> ss <C-w>s
+" nnoremap <silent> vv <C-w>v
+" nnoremap <silent> ss <C-w>s
 
 " Resize windows with arrow keys
 nnoremap <D-Up> <C-w>+
@@ -220,8 +220,8 @@ vmap <D-A> :Tabularize /
 " ============================
 " SplitJoin plugin
 " ============================
-nmap sj :SplitjoinSplit<cr>
-nmap sk :SplitjoinJoin<cr>
+"nmap sj :SplitjoinSplit<cr>
+"nmap sk :SplitjoinJoin<cr>
 
 " ============================
 " vim-ruby-conque

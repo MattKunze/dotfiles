@@ -49,6 +49,7 @@ alias gstsh='git stash'
 alias gst='git stash'
 alias gsp='git stash pop'
 alias gsa='git stash apply'
+alias gsd='git stash drop'
 alias gsh='git show'
 alias gshw='git show'
 alias gshow='git show'
@@ -154,6 +155,7 @@ alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A
 
 # items zsh incorrectly tries to autocorrect
 alias htop='nocorrect htop'
+alias grunt='nocorrect grunt'
 
 # ssh shortcuts
 alias ghee='ssh matt@dev.datasplice.com -p 2222'

@@ -162,3 +162,4 @@ alias ghee='ssh matt@dev.datasplice.com -p 2222'
 alias urethra='ssh matt@192.168.0.2'
 alias onelessham='ssh matt@onelessham.dlinkddns.com'
 
+alias hosts='nocorrect sudo vi /etc/hosts'

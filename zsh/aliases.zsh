@@ -156,6 +156,7 @@ alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A
 # items zsh incorrectly tries to autocorrect
 alias htop='nocorrect htop'
 alias grunt='nocorrect grunt'
+alias lessc='nocorrect lessc'
 
 # ssh shortcuts
 alias ghee='ssh matt@dev.datasplice.com -p 2222'
@@ -164,3 +165,4 @@ alias onelessham='ssh matt@onelessham.dlinkddns.com'
 
 # svn shortcuts
 alias ss='svn st --ignore-externals -q'
+

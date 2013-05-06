@@ -166,3 +166,5 @@ alias onelessham='ssh matt@onelessham.dlinkddns.com'
 # svn shortcuts
 alias ss='svn st --ignore-externals -q'
 
+alias hosts='nocorrect sudo vi /etc/hosts'
+

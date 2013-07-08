@@ -5,11 +5,12 @@
      _____| / ___ ( (_| | |
     (_______\_____|\____|_|
 
-    # Yet Another Dotfile Repo v1.0
-    # Now with Prezto!
+    # Yet Another Dotfile Repo v1.1
+    # Now with Prezto and Vundle!
 
-    git clone https://github.com/skwp/dotfiles ~/.yadr
-    cd ~/.yadr && rake install
+    sh -c "`curl -fsSL https://raw.github.com/skwp/dotfiles/master/install.sh`"
+
+**Always be sure to run `rake update` after pulling to ensure plugins are updated**
 
 This is a collection of best of breed tools from across the web,
 from scouring other people's dotfile repos, blogs, and projects.
@@ -43,12 +44,14 @@ Installation is automated via `rake` and the `yadr` command. To get
 started please run:
 
 ```bash
-git clone https://github.com/skwp/dotfiles ~/.yadr
-cd ~/.yadr && rake install
+sh -c "`curl -fsSL https://raw.github.com/skwp/dotfiles/master/install.sh`"
 ```
 
 **Note:** YADR will automatically install all of its subcomponents. If you want to be asked
-about each one, use `ASK=true rake install`
+about each one, use:
+```bash
+sh -c "`curl -fsSL https://raw.github.com/skwp/dotfiles/master/install.sh`" -s ask
+```
 
 # Additional Installation
 
@@ -77,12 +80,8 @@ Read on to learn what YADR provides!
 
 Homebrew is _the missing package manager for OSX_. Installed automatically.
 
-We automatically install a few useful packages including ack, ctags, git, and hub
+We automatically install a few useful packages including ctags, git, and hub, and the silver searcher ('ag')
 You can install macvim from brew as well, or download it from their website.
-
-```bash
-brew install ack ctags git hub macvim tmux reattach-to-user-namespace
-```
 
 ### Github Issues: [ghi gem](https://github.com/stephencelis/ghi)
 
@@ -90,11 +89,11 @@ We include the `ghi` command. Try `ghi list` and have fun managing issues from c
 
 ### Ruby Debugger
 
-This gem is optonal and not included. It's used to give you visual IDE-style debugging within vim, combined
-with the vim-ruby-debugger plugin. To install:
+This plugin is optional and not included. It's used to give you visual IDE-style debugging within vim, combined
+with the debugger-xml gem. To install:
 
 ```bash
-gem install ruby-debug-ide
+gem install debugger-xml
 ```
 
 ### ZSH
@@ -281,7 +280,6 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
 
 #### Tab Navigation
 
- * `Ctrl-H` and `Ctrl-L` - left an right on tabs
  * Use `Cmd-1` thru `Cmd-9` to switch to a specific tab number (like iTerm) - and tabs have been set up to show numbers
 
 #### Window Navigation
@@ -352,7 +350,8 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * EasyMotion - hit ,<esc> (forward) or ,<Shift-Esc> (back) and watch the magic happen. Just type the letters and jump directly to your target - in the provided vimrc the keys are optimized for home row mostly. Using @skwp modified EasyMotion which uses vimperator-style two character targets.
  * LustyJuggler/Explorer - hit B, type buf name to match a buffer, or type S and use the home row keys to select a buffer
  * TagBar - hit ,T to see a list of methods in a class (uses ctags)
- * CtrlP - Ctrl-p or ,t to find a file
+ * CtrlP - ,t to find a file
+ * Visual-star-search - make the * (star) search in visual mode behave like expected: searching for the whole selection instead of just the word under the cursor.
 
 #### Git
 
@@ -364,7 +363,6 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
 
  * AnsiEsc - inteprets ansi color codes inside log files. great for looking at Rails logs
  * solarized - a color scheme scientifically calibrated for awesomeness (including skwp mods for ShowMarks)
- * csapprox - helps colors to be represented correctly on terminals (even though we expect to use MacVim)
  * Powerline - beautiful vim status bar. Requires patched fonts (installed from fonts/ directory)
 
 #### Coding
@@ -395,7 +393,10 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * vim-textobj-entire - gives you `e` for entire document. so vae (visual around entire document), and etc
  * vim-textobj-rubysymbol - gives you `:` textobj. so va: to select a ruby symbol. da: to delete a symbol..etc
  * vim-textobj-function - gives you `f` textobj. so vaf to select a function
+ * vim-textobj-function-javascript - same as above, but for javascript functions
+ * vim-textobj-underscore - gives you `_` textobj. So vi_ selects what's inside a pair of underscores
  * next-textobject - from Steve Losh, ability to use `n` such as vinb (visual inside (n)ext set of parens)
+ * textobj-word-column - gives you `c` (word) and `C` (WORD) for handling columns/blocks.
 
 #### Utils
 
@@ -403,7 +404,7 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * tabularize - align code effortlessly by using :Tabularize /[character] to align by a character, or try the keymaps
  * yankring - effortless sanity for pasting. every time you yank something it goes into a buffer. after hitting p to paste, use ctrl-p or ctrl-n to cycle through the paste options. great for when you accidentally overwrite your yank with a delete.
  * surround - super easy quote and tag manipulation - ysiw" - sourround inner word with quotes. ci"' - change inner double quotes to single quotes, etc
- * greplace - use :Gsearch to find across many files, replace inside the changes, then :Greplace to do a replace across all matches
+ * greplace - use :Gsearch to find across many files, replace inside the changes, then :Greplace to do a replace across all matches - made lightning fast with Silver Searcher
  * ConqueTerm - embedded fully colorful shell inside your vim
  * vim-ruby-conque - helpers to run ruby,rspec,rake within ConqueTerm
  * vim-markdown-preview - :Mm to view your README.md as html
@@ -415,6 +416,7 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * color_highlight - use :ColorCodes to see hex colors highlighted
  * change-inside-surroundings - change content inside delimiters like quotes/brackets
  * Specky - used for color highlighting rspec correctly even if specs live outside of spec/ (rails.vim doesn't handle this)
+ * Ag - use :Ag to search across multiple files. Faster than Grep and Ack.
 
 #### General enhancements that don't add new commands
 
@@ -438,15 +440,17 @@ If you didn't have janus before, it is recommended to just put it in `~/.yadr/vi
 
 ### Adding your own vim plugins
 
-YADR comes with a dead simple plugin manager that just uses git submodules, without any fancy config files.
+YADR comes with a dead simple plugin manager that just uses vundles and submodules, without any fancy config files.
+
+Add a plugin
 
     yav -u https://github.com/airblade/vim-rooter
 
-Delete a plugin (Coming Soon)
+Delete a plugin 
 
-   ydv -p airblade-vim-rooter
+    ydv -u airblade/vim-rooter
 
-The aliases (yav=yadr vim-add-plugin) and (yuv=yadr vim-update-all-plugins) live in the aliases file.
+The aliases (yav=yadr vim-add-plugin), (ydp=yadr vim-delete-plugin) and (yuv=yadr vim-update-all-plugins) live in the aliases file.
 You can then commit the change. It's good to have your own fork of this project to do that.
 
 
@@ -495,9 +499,12 @@ Please explore these people's work.
 
 ### Contributors
 
+Yadr is made possible by many awesome people, too many to list :) But here are a few of the bigger contributors and core committers.
+
  * Initial Version: @skwp
  * Cleanup, auto installer: @kylewest
  * Switch from oh-my-zsh to Presto: @JeanMertz
+ * Vundle migration: @duhanebel
 
 
 ### For more tips and tricks

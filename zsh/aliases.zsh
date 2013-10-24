@@ -159,6 +159,7 @@ alias spb="git checkout -b \`sp | tail -2 | grep '#' | sed 's/^ //' | sed 's/[^A
 alias htop='nocorrect htop'
 alias grunt='nocorrect grunt'
 alias lessc='nocorrect lessc'
+alias cordova='nocorrect cordova'
 
 # ssh shortcuts
 alias ghee='ssh matt@dev.datasplice.com -p 2222'
@@ -169,5 +170,8 @@ alias onelessham='ssh matt@onelessham.dlinkddns.com'
 alias ss='svn st --ignore-externals -q'
 
 alias crs='cake runserver'
+alias gsv='grunt server'
 alias hosts='nocorrect sudo vi /etc/hosts'
+alias adbl='adb logcat | grep \"com\.\|console\" -i'
+alias scd='python -m SimpleHTTPServer'
 

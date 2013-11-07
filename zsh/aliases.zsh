@@ -160,6 +160,8 @@ alias htop='nocorrect htop'
 alias grunt='nocorrect grunt'
 alias lessc='nocorrect lessc'
 alias cordova='nocorrect cordova'
+alias avrt='nocorrect avrt'
+alias avrf='nocorrect avrf'
 
 # ssh shortcuts
 alias ghee='ssh matt@dev.datasplice.com -p 2222'

@@ -178,3 +178,7 @@ alias hosts='nocorrect sudo vi /etc/hosts'
 alias adbl='adb logcat | grep \"com\.\|console\" -i'
 alias scd='python -m SimpleHTTPServer'
 
+alias ni='npm i'
+alias bi='bower i'
+alias nbi='npm i && bower i'
+

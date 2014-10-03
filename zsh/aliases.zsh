@@ -52,6 +52,7 @@ alias gstsh='git stash'
 alias gst='git stash'
 alias gsp='git stash pop'
 alias gsa='git stash apply'
+alias gsd='git stash drop'
 alias gsh='git show'
 alias gshw='git show'
 alias gshow='git show'
@@ -102,6 +103,9 @@ alias gsmu='git submodule update'
 alias gt='git t'
 alias gbg='git bisect good'
 alias gbb='git bisect bad'
+alias gpo='git push origin'
+alias glo='git pull origin'
+alias gfo='git fetch origin'
 
 # Common shell functions
 alias less='less -r'
@@ -121,6 +125,10 @@ alias ts='thin start'
 alias ms='mongrel_rails start'
 alias tfdl='tail -f log/development.log'
 alias tftl='tail -f log/test.log'
+
+# Vim/ctags "mctags = make ctags", using the ruby specific version
+# to save some time
+alias mctags=~/.bin/run_tags.rb #'/opt/local/bin/ctags -Rf ./tags *'
 
 alias ka9='killall -9'
 alias k9='kill -9'
@@ -172,3 +180,29 @@ alias dbmu='spring rake db:migrate:up'
 
 # Homebrew
 alias brewu='brew update && brew upgrade && brew cleanup && brew prune && brew doctor'
+
+# items zsh incorrectly tries to autocorrect
+alias htop='nocorrect htop'
+alias grunt='nocorrect grunt'
+alias lessc='nocorrect lessc'
+alias cordova='nocorrect cordova'
+alias avrt='nocorrect avrt'
+alias avrf='nocorrect avrf'
+
+# ssh shortcuts
+alias ghee='ssh matt@dev.datasplice.com -p 2222'
+alias urethra='ssh matt@192.168.0.2'
+alias onelessham='ssh matt@onelessham.dlinkddns.com'
+
+# svn shortcuts
+alias ss='svn st --ignore-externals -q'
+
+alias crs='cake runserver'
+alias gsv='grunt server'
+alias hosts='nocorrect sudo vi /etc/hosts'
+alias adbl='adb logcat | grep \"com\.\|console\" -i'
+alias scd='python -m SimpleHTTPServer'
+
+alias ni='npm i'
+alias bi='bower i'
+alias nbi='npm i && bower i'

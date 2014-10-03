@@ -1,4 +1,4 @@
-# set your user tokens as environment variables, such as ~/.secrets
+# set your user tokens as enivornment variables, such as ~/.secrets
 # See the README for examples.
 [color]
   ui = true
@@ -89,6 +89,12 @@
   svnr = svn rebase
   svnd = svn dcommit
   svnl = svn log --oneline --show-commit
+
+  # github
+  po = push origin
+  pom = push origin master
+  lo = pull origin
+  lom = pull origin master
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]
@@ -111,17 +117,27 @@
 [core]
   autocrlf = false
   editor = vim
-  excludesfile = ~/.yadr/git/gitignore
+  excludesfile = /Users/matt/.yadr/git/gitignore
 [advice]
-  statusHints = false
+  # statusHints = false
 [diff]
   # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
   # instead of a/b/c/d as prefixes for patches
   mnemonicprefix = true
-	algorithm = patience
 [rerere]
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = true
 [include]
   path = .gitconfig.user
+[user]
+  name = Matt Kunze
+  email = matt.kunze@datasplice.com
+[credential]
+  helper = osxkeychain
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

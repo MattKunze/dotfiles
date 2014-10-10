@@ -1,0 +1,27 @@
+/*
+ * This file will be loaded on package activation. You can directly stylizes
+ * DOM elements by accessing selectors like `.workspace` or `.source`.
+ *
+ * For more information: https://atom.io/docs/latest/creating-a-package#stylesheets
+ */
+
+.preview-container {
+  overflow: scroll;
+  box-sizing: border-box;
+  padding: 0px;
+  code {
+    padding: 0px;
+    background: none;
+  }
+
+  .preview-code-block {
+    padding: 0px 9.5px;
+  }
+
+  .message {
+    opacity: 0.8;
+    position: absolute;
+    right: 0;
+    left: 0;
+  }
+}

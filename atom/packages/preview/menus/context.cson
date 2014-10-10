@@ -1,0 +1,9 @@
+###
+# For more information: https://atom.io/docs/latest/creating-a-package#context-menu
+###
+
+'context-menu':
+  '.workspace .editor:not(.mini)':
+    'Toggle Preview': 'preview:toggle'
+    'Toggle Preview Options': 'preview:toggle-options'
+    'Select Preview Renderer': 'preview:select-renderer'

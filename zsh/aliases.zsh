@@ -206,5 +206,8 @@ alias adbl='adb logcat | grep \"com\.\|console\" -i'
 alias scd='python -m SimpleHTTPServer'
 
 alias ni='npm i'
+alias nd='rm -rf ./node_modules'
 alias bi='bower i'
+alias bd='rm -rf ./bower_components'
 alias nbi='npm i && bower i'
+alias nbd='rm -rf ./node_modules ./bower_components'

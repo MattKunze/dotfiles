@@ -106,6 +106,8 @@ alias gbb='git bisect bad'
 alias gpo='git push origin'
 alias glo='git pull origin'
 alias gfo='git fetch origin'
+# delete merged branches
+alias dmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 
 # Common shell functions
 alias less='less -r'

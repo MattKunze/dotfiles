@@ -5,3 +5,5 @@ if [ -d $HOME/.zsh.before/ ]; then
     for config_file ($HOME/.zsh.before/*.zsh) source $config_file
   fi
 fi
+
+export ANDROID_HOME=~/Frameworks/android-sdk-macosx

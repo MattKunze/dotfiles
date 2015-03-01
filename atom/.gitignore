@@ -1,5 +1,8 @@
 storage
 compile-cache
 dev
+packages
+atom-shell
+.apm
 .npm
 .node-gyp

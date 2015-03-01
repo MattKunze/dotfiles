@@ -1,28 +1,32 @@
-'exception-reporting':
-  'userId': '217d47ee-a174-81f4-671d-844f4e781239'
-'release-notes':
-  'viewedVersion': '0.84.0'
-'welcome':
-  'showOnStartup': false
-'metrics':
-  'userId': '97100b4de2faec295d09d0f7756ec629305282bd'
-'editor':
-  'invisibles': {}
-  'fontSize': 12
-'core':
-  'themes': [
-    'atom-dark-ui'
-    'solarized-dark-syntax'
-  ]
-  'ignoredNames': [
-    '.git'
-    '.svn'
-    '.DS_Store'
-  ]
-  'projectHome': '/Users/matt/active'
-  'useReactEditor': true
-  'disabledPackages': [
-    'autocomplete-plus'
-  ]
-'preview':
-  '_analyticsUserId': '080e509f-8ec0-46bd-a151-26deab7fc880'
+"*":
+  "exception-reporting":
+    userId: "217d47ee-a174-81f4-671d-844f4e781239"
+  "release-notes":
+    viewedVersion: "0.84.0"
+  welcome:
+    showOnStartup: false
+  metrics:
+    userId: "97100b4de2faec295d09d0f7756ec629305282bd"
+  editor:
+    invisibles: {}
+    fontSize: 13
+    showIndentGuide: true
+  core:
+    ignoredNames: [
+      ".git"
+      ".svn"
+      ".DS_Store"
+    ]
+    disabledPackages: [
+      "autocomplete-plus"
+    ]
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
+    projectHome: "/Users/matt/active"
+  preview:
+    _analyticsUserId: "080e509f-8ec0-46bd-a151-26deab7fc880"
+  "vim-mode": {}
+  "tree-view":
+    hideVcsIgnoredFiles: true

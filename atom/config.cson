@@ -17,9 +17,6 @@
       ".svn"
       ".DS_Store"
     ]
-    disabledPackages: [
-      "autocomplete-plus"
-    ]
     themes: [
       "one-light-ui"
       "one-light-syntax"
@@ -30,3 +27,4 @@
   "vim-mode": {}
   "tree-view":
     hideVcsIgnoredFiles: true
+  "autocomplete-plus": {}

@@ -9,7 +9,7 @@
     userId: "97100b4de2faec295d09d0f7756ec629305282bd"
   editor:
     invisibles: {}
-    fontSize: 13
+    fontSize: 12
     showIndentGuide: true
   core:
     ignoredNames: [
@@ -18,13 +18,15 @@
       ".DS_Store"
     ]
     themes: [
-      "one-light-ui"
-      "one-light-syntax"
+      "one-dark-ui"
+      "one-dark-syntax"
     ]
     projectHome: "/Users/matt/active"
+    excludeVcsIgnoredPaths: false
+    followSymlinks: true
   preview:
     _analyticsUserId: "080e509f-8ec0-46bd-a151-26deab7fc880"
   "vim-mode": {}
-  "tree-view":
-    hideVcsIgnoredFiles: true
+  "tree-view": {}
   "autocomplete-plus": {}
+  "fuzzy-finder": {}

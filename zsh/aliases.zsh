@@ -124,7 +124,7 @@ alias gbg='git bisect good'
 alias gbb='git bisect bad'
 alias gpo='git push origin'
 alias glo='git pull origin'
-alias gfo='git fetch origin'
+alias gfo='git fetch origin --prune'
 # delete merged branches
 alias dmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 
@@ -222,6 +222,7 @@ alias crs='cake runserver'
 alias gsv='grunt server'
 alias hosts='nocorrect sudo vi /etc/hosts'
 alias adbl='adb logcat | grep \"com\.\|console\" -i'
+alias logcat='adb logcat "*:S"'
 alias scd='python -m SimpleHTTPServer'
 
 alias ni='npm i'

@@ -6,4 +6,4 @@ if [ -d $HOME/.zsh.before/ ]; then
   fi
 fi
 
-export ANDROID_HOME=~/Frameworks/android-sdk-macosx
+export ANDROID_HOME=~/Library/Android/sdk

@@ -36,6 +36,7 @@ abbr -a gcim git commit -m
 abbr -a gb git branch -v
 abbr -a gnb git checkout -b
 abbr -a gst git stash
+abbr -a gsl git stash list
 abbr -a gsa git stash apply
 abbr -a gsp git stash pop
 abbr -a gsd git stash drop

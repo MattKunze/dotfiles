@@ -76,6 +76,14 @@ function fish_prompt --description 'Write out the prompt'
             set suffix '$'
     end
 
+    set_color yellow
+    printf '%s' (whoami)
+    set_color normal
+    printf '@'
+
+    set_color magenta
+    echo -n (prompt_hostname)
+    
     # PWD
     set_color $color_cwd
     echo -n (prompt_pwd)

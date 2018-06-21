@@ -1,12 +1,11 @@
-export ANDROID_HOME=~/Library/Android/sdk
-export N_PREFIX="$HOME/n"
-export PATH="$PATH:$N_PREFIX/bin"
+set ANDROID_HOME ~/Library/Android/sdk
+set N_PREFIX $HOME/n
+set PATH $PATH $N_PREFIX/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
 
 fish_vi_key_bindings
 
 alias atom='atom-beta'
 alias apm='apm-beta'
-alias code='code-insiders'
 
 # Show human friendly numbers and colors
 alias df='df -h'

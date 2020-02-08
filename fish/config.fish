@@ -3,6 +3,7 @@ set N_PREFIX $HOME/n
 set PATH $PATH $N_PREFIX/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
 
 fish_vi_key_bindings
+starship init fish | source
 
 alias atom='atom-beta'
 alias apm='apm-beta'

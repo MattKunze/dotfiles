@@ -132,7 +132,7 @@
   path = .gitconfig.user
 [user]
   name = Matt Kunze
-  email = matt.kunze@datasplice.com
+  email = matt.kunze@gmail.com
 [credential]
   helper = osxkeychain
 [difftool "sourcetree"]

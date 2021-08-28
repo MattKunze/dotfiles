@@ -17,13 +17,22 @@ alias dmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 # Homebrew
 alias brewu='brew update; and brew upgrade; and brew cleanup; and brew prune; and brew doctor'
 
+abbr -a nb npm run build
 abbr -a ni npm i
 abbr -a nd rm -rf ./node_modules
 abbr -a ns npm start --
+
+abbr -a yb yarn build
+abbr -a yd yarn dev
 abbr -a ys yarn start
 abbr -a ysb yarn storybook
-abbr -a yd yarn dev
 abbr -a yt yarn test
+
+abbr -a dcu docker-compose up
+abbr -a dcd docker-compose down
+abbr -a dce docker-compose exec
+abbr -a dps docker ps
+abbr -a dsp docker system prune
 
 abbr -a gs git status
 abbr -a gd git diff

@@ -1,6 +1,10 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_init_3_x:\x1d
+SETUVAR __fish_initialized:3100
+SETUVAR _fish_abbr_dcd:docker\x2dcompose\x20down
+SETUVAR _fish_abbr_dcu:docker\x2dcompose\x20up
+SETUVAR _fish_abbr_dsp:docker\x20system\x20prune
 SETUVAR _fish_abbr_ga:git\x20add\x20\x2dA
 SETUVAR _fish_abbr_gb:git\x20branch\x20\x2dv
 SETUVAR _fish_abbr_gci:git\x20commit
@@ -30,7 +34,12 @@ SETUVAR _fish_abbr_gst:git\x20stash
 SETUVAR _fish_abbr_nd:rm\x20\x2drf\x20\x2e/node_modules
 SETUVAR _fish_abbr_ni:npm\x20i
 SETUVAR _fish_abbr_ns:npm\x20start\x20\x2d\x2d
-SETUVAR fish_color_autosuggestion:555\x1ebrblack
+SETUVAR _fish_abbr_rb:ruby
+SETUVAR _fish_abbr_yd:yarn\x20dev
+SETUVAR _fish_abbr_ys:yarn\x20start
+SETUVAR _fish_abbr_ysb:yarn\x20storybook
+SETUVAR _fish_abbr_yt:yarn\x20test
+SETUVAR fish_color_autosuggestion:3BA3D0
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7
 SETUVAR fish_color_comment:990000
@@ -41,6 +50,7 @@ SETUVAR fish_color_error:ff0000
 SETUVAR fish_color_escape:00a6b2
 SETUVAR fish_color_history_current:\x2d\x2dbold
 SETUVAR fish_color_host:normal
+SETUVAR fish_color_host_remote:yellow
 SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:00a6b2
@@ -56,3 +66,4 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_user_paths:/Users/matt/\x2econfig/nvm/16\x2e8\x2e0/bin

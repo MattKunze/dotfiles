@@ -1,12 +1,11 @@
 set ANDROID_HOME ~/Library/Android/sdk
-set N_PREFIX $HOME/n
-set PATH $PATH $N_PREFIX/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
+set PATH $PATH $HOME/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $HOME/.cargo/bin $HOME/Library/Python/3.8/bin
 
 fish_vi_key_bindings
 starship init fish | source
 
-alias atom='atom-beta'
-alias apm='apm-beta'
+alias vsch='code .'
+alias awslocal='aws --endpoint-url=http://localhost:4566'
 
 # Show human friendly numbers and colors
 alias df='df -h'
@@ -21,6 +20,10 @@ alias brewu='brew update; and brew upgrade; and brew cleanup; and brew prune; an
 abbr -a ni npm i
 abbr -a nd rm -rf ./node_modules
 abbr -a ns npm start --
+abbr -a ys yarn start
+abbr -a ysb yarn storybook
+abbr -a yd yarn dev
+abbr -a yt yarn test
 
 abbr -a gs git status
 abbr -a gd git diff

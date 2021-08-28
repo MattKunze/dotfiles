@@ -1,5 +1,7 @@
-Code/
-dconf/
-pulse/
-cros-garcon.conf
-weston.ini
+.vscode
+bpytop
+configstore
+htop
+nvm
+NuGet
+yarn

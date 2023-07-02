@@ -24,6 +24,7 @@ if status is-interactive
   abbr -a hms home-manager switch
   abbr -a ns nix-shell
   abbr -a nsp nix-shell --packages
+  abbr -a nls nix search nixpkgs
 
   abbr -a code code-insiders
 

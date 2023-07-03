@@ -26,8 +26,6 @@ if status is-interactive
   abbr -a nsp nix-shell --packages
   abbr -a nls nix search nixpkgs
 
-  abbr -a code code-insiders
-
   abbr -a el exa -l --icons --git
   abbr -a ea exa -la --icons --git
 
@@ -57,4 +55,9 @@ if status is-interactive
   abbr -a grc git rebase --continue
   abbr -a grs git rebase --skip
   abbr -a gcp git cherry-pick
+
+  abbr -a yb yarn build
+  abbr -a yt yarn test
+  abbr -a ytw yarn test:watch
+  abbr -a yws yarn workspace
 end

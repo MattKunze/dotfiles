@@ -34,6 +34,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    pkgs.any-nix-shell
     pkgs.croc
     pkgs.direnv
     pkgs.exa

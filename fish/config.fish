@@ -2,6 +2,7 @@ if status is-interactive
   # Commands to run in interactive sessions can go here
 
   any-nix-shell fish --info-right | source
+  atuin init fish --disable-up-arrow | source
   direnv hook fish | source
   fish_vi_key_bindings
   starship init fish | source

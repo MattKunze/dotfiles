@@ -35,6 +35,8 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     pkgs.any-nix-shell
+    pkgs.atuin
+    pkgs.colima
     pkgs.croc
     pkgs.direnv
     pkgs.exa

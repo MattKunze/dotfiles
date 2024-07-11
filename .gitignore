@@ -1,0 +1,9 @@
+# ignore everything and then selectively include config we want to persist
+*
+!.gitignore
+!home-manager/
+!home-manager/*
+!nix/
+!nix/*
+!nixpkgs/
+!nixpkgs/*

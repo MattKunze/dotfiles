@@ -106,7 +106,13 @@
     enable = true;
     userName = "Matt Kunze";
     userEmail = "matt.kunze@gmail.com";
-    ignores = [ ".DS_Store" ".jj" ];
+    ignores = [
+      ".DS_Store"
+      ".jj"
+      ".devenv*"
+      "devenv.local.nix"
+      ".direnv"
+    ];
     extraConfig = {
       init = { defaultBranch = "main"; };
     };

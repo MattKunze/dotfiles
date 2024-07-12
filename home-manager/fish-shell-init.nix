@@ -5,10 +5,13 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
       fish_vi_key_bindings
+      any-nix-shell fish --info-right | source
 
       abbr -a hms home-manager switch
       abbr -a nsp nix-shell --packages
       abbr -a nls nix search nixpkgs
+
+      abbr wfy "printf '\eP\$f{\"hook\": \"SourcedRcFileForWarp\", \"value\": { \"shell\": \"fish\" }}\x9c'"
 
       abbr -a cd z
 

@@ -4,7 +4,11 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "matt";
-  home.homeDirectory = "/home/matt";
+  home.homeDirectory =
+    if pkgs.stdenv.isDarwin
+    then "/Users/matt"
+    else "/home/matt";
+
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -35,6 +39,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
+    pkgs.any-nix-shell
     pkgs.devenv
     pkgs.direnv
     pkgs.eza
@@ -77,7 +82,7 @@
   #  /etc/profiles/per-user/matt/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "vim";
   };
 
   # Let Home Manager install and manage itself.
@@ -106,6 +111,13 @@
   };
   programs.starship = {
     enable = true;
+  };
+  programs.vim = {
+    enable = true;
+    settings = {
+      expandtab = true;
+      tabstop = 2;
+    };
   };
   programs.vscode = {
     enable = true;

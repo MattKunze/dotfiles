@@ -41,13 +41,13 @@
 
     pkgs.any-nix-shell
     pkgs.devenv
-    pkgs.direnv
     pkgs.eza
     pkgs.gotop
     pkgs.iperf3
+    pkgs.jq
     pkgs.nmap
     pkgs.unzip
-    pkgs.warp-terminal
+    # pkgs.warp-terminal
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -82,7 +82,6 @@
   #  /etc/profiles/per-user/matt/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "vim";
   };
 
   # Let Home Manager install and manage itself.
@@ -97,6 +96,9 @@
       sync_address = "https://home.shypan.st/atuin/";
     };
   };
+  programs.direnv = {
+    enable = true;
+  };
   programs.fish = {
     enable = true;
   };
@@ -109,22 +111,32 @@
       init = { defaultBranch = "main"; };
     };
   };
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    extraConfig = ''
+      set expandtab
+      set shiftwidth=2
+      set tabstop=2
+    '';
+  };
   programs.starship = {
     enable = true;
-  };
-  programs.vim = {
-    enable = true;
     settings = {
-      expandtab = true;
-      tabstop = 2;
+      aws.disabled = true;
+      docker_context.disabled = true;
+      nix_shell.disabled = true;
+      package.disabled = true;
     };
   };
-  programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      vscodevim.vim
-    ];
-  };
+  # programs.vscode = {
+  #   enable = true;
+  #   extensions = with pkgs.vscode-extensions; [
+  #     vscodevim.vim
+  #   ];
+  # };
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;

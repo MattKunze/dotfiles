@@ -25,7 +25,7 @@
       abbr -a gco git checkout
       abbr -a gf git fetch
       abbr -a gfo git fetch origin --prune
-      abbr -a glo git pull origin
+      abbr -a glo git pull origin --autostash
       abbr -a gpo git push origin
       abbr -a ga git add -A
       abbr -a gci git commit

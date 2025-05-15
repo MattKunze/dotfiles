@@ -21,7 +21,7 @@
 
       abbr -a gs git status
       abbr -a gd git diff
-      abbr -a gl git log --graph --date=short
+      abbr -a gl git log --graph --date=short --oneline
       abbr -a gco git checkout
       abbr -a gf git fetch
       abbr -a gfo git fetch origin --prune
@@ -52,6 +52,9 @@
       abbr -a yt yarn test
       abbr -a ytw yarn test:watch
       abbr -a yws yarn workspace
+
+      abbr -a cr cargo run
+      abbr -a ca cargo add
 
       abbr -a dps docker ps
       abbr -a dcu docker compose up

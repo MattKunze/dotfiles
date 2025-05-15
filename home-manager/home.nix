@@ -45,9 +45,11 @@
     pkgs.gotop
     pkgs.iperf3
     pkgs.jq
+    pkgs.nixd
     pkgs.nmap
     pkgs.unzip
     # pkgs.warp-terminal
+    pkgs.websocat
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -115,6 +117,7 @@
     ];
     extraConfig = {
       init = { defaultBranch = "main"; };
+      pull = { rebase = true; };
     };
   };
   programs.neovim = {

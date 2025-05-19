@@ -45,6 +45,7 @@
     pkgs.gotop
     pkgs.iperf3
     pkgs.jq
+    pkgs.nil
     pkgs.nixd
     pkgs.nmap
     pkgs.unzip
@@ -120,6 +121,15 @@
       pull = { rebase = true; };
     };
   };
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Matt Kunze";
+        email = "matt.kunze@gmail.com";
+      };
+    };
+  };
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -133,12 +143,7 @@
   };
   programs.starship = {
     enable = true;
-    settings = {
-      aws.disabled = true;
-      docker_context.disabled = true;
-      nix_shell.disabled = true;
-      package.disabled = true;
-    };
+    settings = pkgs.lib.importTOML ./starship.toml;
   };
   # programs.vscode = {
   #   enable = true;

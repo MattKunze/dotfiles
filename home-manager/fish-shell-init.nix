@@ -46,6 +46,12 @@
       abbr -a grs git rebase --skip
       abbr -a gcp git cherry-pick
 
+      abbr -a js jj st
+      abbr -a jl jj log
+      abbr -a jn jj new
+      abbr -a jd jj describe -m
+      abbr -a ja jj abandon
+
       abbr -a yb yarn build
       abbr -a yd yarn dev
       abbr -a ys yarn start
@@ -63,4 +69,3 @@
     '';
   };
 }
-

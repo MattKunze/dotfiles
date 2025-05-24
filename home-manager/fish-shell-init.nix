@@ -13,7 +13,9 @@
 
       abbr wfy "printf '\eP\$f{\"hook\": \"SourcedRcFileForWarp\", \"value\": { \"shell\": \"fish\" }}\x9c'"
 
+      abbr -a cat bat
       abbr -a cd z
+      abbr -a find fd
 
       abbr -a ll eza -l --icons --git
       abbr -a la eza -la --icons --git

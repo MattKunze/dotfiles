@@ -40,17 +40,24 @@
     # '')
 
     pkgs.any-nix-shell
+    pkgs.bat
     pkgs.devenv
+    pkgs.du-dust
     pkgs.eza
+    pkgs.fd
+    pkgs.github-cli
     pkgs.gotop
     pkgs.iperf3
     pkgs.jq
     pkgs.nil
     pkgs.nixd
     pkgs.nmap
+    pkgs.ripgrep
+    pkgs.ripgrep-all
     pkgs.unzip
     # pkgs.warp-terminal
     pkgs.websocat
+    pkgs.xh
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

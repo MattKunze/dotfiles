@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
-{ imports = [ ./fish-shell-init.nix ];
+{ imports = [ ./fish-shell-init.nix ./nushell-init.nix ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "matt";
@@ -107,9 +107,6 @@
     };
   };
   programs.direnv = {
-    enable = true;
-  };
-  programs.fish = {
     enable = true;
   };
   programs.git = {

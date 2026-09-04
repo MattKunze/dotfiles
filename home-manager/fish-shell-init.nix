@@ -8,12 +8,19 @@
       set fish_greeting # Disable greeting
       fish_vi_key_bindings
       any-nix-shell fish --info-right | source
+      mise activate fish | source
+
+      bind -M insert "?" _atuin_ai_question_mark
+
+      fish_add_path /Users/matt/.local/bin
+      fish_add_path /Users/matt/.opencode/bin
+      fish_add_path /Users/matt/go/bin
 
       abbr -a hms home-manager switch
       abbr -a nsp nix-shell --packages
       abbr -a nls nix search nixpkgs
 
-      abbr wfy "printf '\eP\$f{\"hook\": \"SourcedRcFileForWarp\", \"value\": { \"shell\": \"fish\" }}\x9c'"
+      abbr -a oc opencode
 
       abbr -a cat bat
       abbr -a cd z
@@ -36,7 +43,7 @@
       abbr -a gcim git commit -m
       abbr -a gb git branch -v
       abbr -a gnb git checkout -b
-      abbr -a gst git stash
+      abbr -a gst git stash -u
       abbr -a gsl git stash list
       abbr -a gsa git stash apply
       abbr -a gsp git stash pop
@@ -63,10 +70,14 @@
       abbr -a ytw yarn test:watch
       abbr -a yws yarn workspace
 
+      abbr -a j just
+
       abbr -a cr cargo run
       abbr -a ca cargo add
 
       abbr -a dps docker ps
+      abbr -a dc docker compose
+      abbr -a dcb docker build
       abbr -a dcu docker compose up
       abbr -a dcd docker compose down
       abbr -a dcr docker compose restart

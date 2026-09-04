@@ -41,23 +41,29 @@
 
     pkgs.any-nix-shell
     pkgs.bat
+    pkgs.colima
     pkgs.devenv
-    pkgs.du-dust
+    pkgs.dust
     pkgs.eza
     pkgs.fd
     pkgs.github-cli
     pkgs.gotop
+    pkgs.httpie
     pkgs.iperf3
     pkgs.jq
     pkgs.nil
     pkgs.nixd
     pkgs.nmap
+    pkgs.podman
     pkgs.ripgrep
     pkgs.ripgrep-all
     pkgs.unzip
+    pkgs.uv
     # pkgs.warp-terminal
+    # pkgs.watchexec
     pkgs.websocat
     pkgs.xh
+    # pkgs.xquartz
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -104,6 +110,9 @@
       style = "compact";
       ctrl_n_shortcuts = true;
       sync_address = "https://home.shypan.st/atuin/";
+      ai = {
+        enabled = true;
+      };
     };
   };
   programs.direnv = {
@@ -111,8 +120,6 @@
   };
   programs.git = {
     enable = true;
-    userName = "Matt Kunze";
-    userEmail = "matt.kunze@gmail.com";
     ignores = [
       ".DS_Store"
       ".jj"
@@ -120,7 +127,11 @@
       "devenv.local.nix"
       ".direnv"
     ];
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Matt Kunze";
+        email = "matt.kunze@gmail.com";
+      };
       init = { defaultBranch = "main"; };
       pull = { rebase = true; };
     };

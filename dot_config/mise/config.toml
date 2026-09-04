@@ -32,7 +32,10 @@ neovim = "latest"
 jj = "latest"
 
 # AI coding agent — OpenCode 2 (beta). Installs the `opencode2` binary.
-"npm:@opencode-ai/cli" = "beta"
+# allow_builds permits the package's postinstall script (which selects the
+# native platform binary); mise otherwise installs npm packages with scripts
+# disabled, and opencode2 errors out without it.
+"npm:@opencode-ai/cli" = { version = "beta", allow_builds = ["@opencode-ai/cli"] }
 
 # mise internals (task/completion support)
 usage = "latest"

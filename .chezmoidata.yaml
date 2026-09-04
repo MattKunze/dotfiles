@@ -1,0 +1,15 @@
+# Shared, non-secret defaults used by chezmoi templates.
+# Machine-specific settings (machine type) live in ~/.config/chezmoi/chezmoi.toml,
+# created by .chezmoi.toml.tmpl on `chezmoi init`.
+
+personal:
+  git:
+    name: Matt Kunze
+    email: matt.kunze@gmail.com
+  atuin_sync: https://home.shypan.st/atuin/
+
+work:
+  git:
+    name: Kunze, Matt
+    email: Matt.Kunze+nextera@nexteraenergy.com
+  atuin_sync: https://api.atuin.sh

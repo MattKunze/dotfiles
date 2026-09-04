@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Installs/updates all tools declared in ~/.config/mise/config.toml.
+# Re-runs automatically whenever the mise config changes.
+{{- $mise_config := include "dot_config/mise/config.toml" | sha256sum }}
+# mise config checksum: {{ $mise_config }}
+
+set -eu
+
+MISE="${MISE_BIN:-$HOME/.local/bin/mise}"
+if [ ! -x "$MISE" ]; then
+    echo "mise not found at $MISE — run bootstrap.sh first" >&2
+    exit 1
+fi
+
+"$MISE" install

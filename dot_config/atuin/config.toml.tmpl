@@ -1,0 +1,9 @@
+{{- $sync := .personal.atuin_sync -}}
+{{- if .is_work }}{{ $sync = .work.atuin_sync }}{{ end -}}
+style = "compact"
+ctrl_n_shortcuts = true
+sync_address = {{ $sync | quote }}
+enter_accept = true
+
+[ai]
+enabled = true

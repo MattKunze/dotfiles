@@ -1,0 +1,8 @@
+.DS_Store
+
+.jj/
+.devenv*
+devenv.local.nix
+.direnv/
+
+**/.claude/settings.local.json

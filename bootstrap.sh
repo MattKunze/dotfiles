@@ -3,9 +3,10 @@
 #
 #   git clone https://github.com/MattKunze/dotfiles.git && cd dotfiles && ./bootstrap.sh
 #
-# Installs mise + chezmoi into ~/.local/bin, applies all dotfiles, and installs
-# tools declared in ~/.config/mise/config.toml. Fish itself is a prerequisite
-# (installed manually per machine — see README).
+# Installs mise + chezmoi into ~/.local/bin, applies all dotfiles (which also
+# installs polytoken via a run_once script), and installs tools declared in
+# ~/.config/mise/config.toml. Fish itself is a prerequisite (installed manually
+# per machine — see README).
 
 set -eu
 
@@ -78,5 +79,6 @@ cat <<EOF
       gh auth login
       atuin login            (or: atuin register)
       opencode2              (OpenCode 2 beta; first run does setup)
+      polytoken              (first run does setup)
   - add secrets to ~/.config/secrets/*.fish
 EOF

@@ -42,3 +42,7 @@ usage = "latest"
 
 # To add more tools, run `mise registry | grep <name>` to find the backend,
 # add it here (or `mise use -g <tool>` which edits this file), then `mise install`.
+#
+# polytoken is intentionally NOT here: it isn't in mise's registry and manages
+# its own updates. It's installed to ~/.local/bin by
+# run_once_install-polytoken.sh (chezmoi) and updated by `mise run update`.

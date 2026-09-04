@@ -26,7 +26,8 @@ Dotfiles managed by [chezmoi](https://www.chezmoi.io), tools managed by
    needs it (preinstalled on macOS/Fedora/Arch equivalents).
 
    This installs mise + chezmoi into `~/.local/bin`, applies all dotfiles,
-   installs every tool in the mise config, and creates `~/.config/secrets/`.
+   installs polytoken (via a chezmoi `run_once` script) and every tool in the
+   mise config, and creates `~/.config/secrets/`.
    It prompts for machine type (personal/work); for non-interactive runs
    (containers, CI) set `CHEZMOI_MACHINE_TYPE=personal` (or `work`) instead.
 
@@ -37,6 +38,7 @@ Dotfiles managed by [chezmoi](https://www.chezmoi.io), tools managed by
    gh auth login
    atuin login                    # or: atuin register
    opencode2                      # OpenCode 2 (beta), first-run setup
+   polytoken                      # first-run setup
    ```
 
    Machine-specific keys/env go in `~/.config/secrets/*.fish` (fish syntax,
@@ -51,7 +53,7 @@ Dotfiles managed by [chezmoi](https://www.chezmoi.io), tools managed by
 | Pull + apply everywhere | `chezmoi update` (abbr: `cmu`)                 |
 | See what would change   | `chezmoi diff` (abbr: `cmd`)                   |
 | Install/upgrade tools   | `mise install` (abbr: `mi`) / `mise upgrade`   |
-| Everything at once      | `mise run update` (abbr: `mr update`)          |
+| Everything at once      | `mise run update` (abbr: `mr update`) — also updates polytoken |
 | Fish abbreviations      | all in `dot_config/fish/conf.d/abbr.fish`      |
 
 ## Layout
@@ -68,8 +70,27 @@ dot_config/              files applied to ~/.config/
   mise/tasks/            mise tasks (mise run update, ...)
   secrets/               README only — actual secret files are untracked
 run_onchange_install-packages.sh.tmpl   re-runs `mise install` on config change
+run_once_install-polytoken.sh           installs polytoken if missing (see below)
 bootstrap.sh             one-shot onboarding script (not applied to $HOME)
 ```
+
+## Polytoken
+
+[Polytoken](https://docs.polytoken.dev) is not managed by mise — it isn't in
+mise's registry, and it ships its own updater (release channels, launch-time
+update checks), which would conflict with `mise upgrade`. Instead it is
+installed by the official shell installer into `~/.local/bin` alongside
+mise/chezmoi:
+
+- Fresh machines: `bootstrap.sh` → `chezmoi init --apply` runs
+  `run_once_install-polytoken.sh`.
+- Already-bootstrapped machines: the same script runs on the next
+  `chezmoi apply` (installs only if the binary is missing).
+- Updates: `mise run update` runs `polytoken update` and regenerates fish
+  completions; polytoken also checks for updates on its own at launch.
+
+Fish completions live in `~/.config/fish/completions/polytoken.fish` and fish
+loads them automatically.
 
 ## Adding a tool
 
@@ -88,8 +109,9 @@ inside the project (replaces devenv/direnv).
 
 `./test/smoke.sh` builds a bare `debian:latest` image containing only the
 documented prerequisites (fish, git, curl, libatomic1), runs `bootstrap.sh`
-inside it, and verifies the results: dotfiles applied, fish starts and loads
-67+ abbreviations, mise tools installed, templated config rendered.
+inside it, and verifies the results: dotfiles applied, polytoken installed,
+fish starts and loads 67+ abbreviations, mise tools installed, templated
+config rendered.
 
 The repo is volume-mounted and used directly as the chezmoi source
 (`DOTFILES_LOCAL_SOURCE`), so uncommitted changes are tested. To test the

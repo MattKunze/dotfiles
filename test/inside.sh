@@ -23,6 +23,8 @@ fail() {
 # --- binaries installed by bootstrap
 [ -x "$HOME/.local/bin/mise" ] || fail "mise not installed"
 [ -x "$HOME/.local/bin/chezmoi" ] || fail "chezmoi not installed"
+[ -x "$HOME/.local/bin/polytoken" ] || fail "polytoken not installed"
+[ -f "$HOME/.config/fish/completions/polytoken.fish" ] || fail "polytoken fish completions missing"
 
 # --- dotfiles applied
 for f in \

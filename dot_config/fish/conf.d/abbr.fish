@@ -17,6 +17,7 @@ abbr -a cat bat
 abbr -a cd z
 abbr -a find fd
 abbr -a oc opencode2
+abbr -a pt polytoken
 abbr -a we watchexec
 
 abbr -a ll eza -l --icons --git

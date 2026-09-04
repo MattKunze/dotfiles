@@ -66,6 +66,19 @@ grep -q "Matt Kunze" "$HOME/.config/git/config" || fail "git identity not render
 grep -q "home.shypan.st/atuin" "$HOME/.config/atuin/config.toml" || fail "atuin sync address not rendered"
 echo "ok: templated config rendered (personal)"
 
+# --- warm-burnout theme external + symlinks
+[ -f "$HOME/.local/share/warm-burnout/opencode/warm-burnout.json" ] \
+    || fail "warm-burnout external not fetched"
+[ -f "$(readlink -f "$HOME/.config/opencode/themes/warm-burnout.json")" ] \
+    || fail "opencode theme symlink broken"
+[ -f "$(readlink -f "$HOME/.config/ghostty/themes/warm-burnout-dark")" ] \
+    || fail "ghostty dark theme symlink broken"
+[ -f "$(readlink -f "$HOME/.config/ghostty/themes/warm-burnout-light")" ] \
+    || fail "ghostty light theme symlink broken"
+grep -q "warm-burnout-dark" "$HOME/.config/ghostty/config" \
+    || fail "ghostty not using warm-burnout theme"
+echo "ok: warm-burnout theme external + symlinks"
+
 echo ""
 echo "========================================"
 echo "SMOKE TEST PASSED"

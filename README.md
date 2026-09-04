@@ -99,6 +99,25 @@ true onboarding path (clone from origin), comment out the
 Machine type is forced to `personal` via `CHEZMOI_MACHINE_TYPE` (no TTY in
 containers); set `work` to test work-machine rendering.
 
+## Theming
+
+The [warm-burnout](https://github.com/felipefdl/warm-burnout) theme is pulled
+by chezmoi as an external (`.chezmoiexternal.yaml`) into
+`~/.local/share/warm-burnout` — no submodules, and it refreshes with
+`chezmoi update` (weekly; force with `chezmoi update --refresh-externals`).
+Symlinks into it are managed like any other dotfile:
+
+- `~/.config/opencode/themes/warm-burnout.json`
+- `~/.config/ghostty/themes/warm-burnout-{dark,light}` (ghostty config points
+  at these via `theme = dark:warm-burnout-dark,light:warm-burnout-light`)
+
+The upstream repo also ships themes for bat, eza, alacritty, and others — to
+wire up another app, add a `symlink_` file under the right `dot_config/...`
+path pointing into `~/.local/share/warm-burnout/<app>/...` (see existing
+examples), then `chezmoi apply`. To use a local fork instead of upstream,
+change the `url` in `.chezmoiexternal.yaml` and delete
+`~/.local/share/warm-burnout` before the next apply.
+
 ## Extending
 
 - New dotfile: `chezmoi add ~/.config/foo/bar.conf`, then `chezmoi apply`.

@@ -1,0 +1,10 @@
+# Third-party assets fetched and refreshed by chezmoi (no git submodules).
+# `chezmoi update` clones once, then pulls when refreshPeriod elapses.
+# Force a refresh: chezmoi update --refresh-externals
+.local/share/warm-burnout:
+    type: git-repo
+    url: https://github.com/felipefdl/warm-burnout.git
+    refreshPeriod: 168h
+    pull:
+        args:
+            - --ff-only

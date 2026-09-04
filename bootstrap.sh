@@ -39,6 +39,11 @@ if ! command -v fish >/dev/null 2>&1; then
     exit 1
 fi
 
+if ! command -v curl >/dev/null 2>&1; then
+    echo "error: curl is required (used to download mise and chezmoi)" >&2
+    exit 1
+fi
+
 log "installing mise"
 if ! command -v mise >/dev/null 2>&1 && [ ! -x "$BIN_DIR/mise" ]; then
     curl -fsSL https://mise.run | MISE_INSTALL_PATH="$BIN_DIR/mise" sh
@@ -50,7 +55,13 @@ if ! command -v chezmoi >/dev/null 2>&1 && [ ! -x "$BIN_DIR/chezmoi" ]; then
 fi
 
 log "applying dotfiles (branch: $BRANCH)"
-"$BIN_DIR/chezmoi" init --apply --branch "$BRANCH" "$REPO_URL"
+if [ -n "${DOTFILES_LOCAL_SOURCE:-}" ]; then
+    # test/dev mode: use a local checkout as the chezmoi source instead of
+    # cloning $REPO_URL (lets you verify uncommitted changes)
+    "$BIN_DIR/chezmoi" init --apply --branch "$BRANCH" --source "$DOTFILES_LOCAL_SOURCE"
+else
+    "$BIN_DIR/chezmoi" init --apply --branch "$BRANCH" "$REPO_URL"
+fi
 
 log "preparing secrets dir (~/.config/secrets)"
 mkdir -p "$HOME/.config/secrets"

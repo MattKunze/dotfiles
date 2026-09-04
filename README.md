@@ -22,8 +22,13 @@ Dotfiles managed by [chezmoi](https://www.chezmoi.io), tools managed by
    ./bootstrap.sh
    ```
 
+   Debian/Ubuntu note: also `sudo apt install libatomic1` — the node binary
+   needs it (preinstalled on macOS/Fedora/Arch equivalents).
+
    This installs mise + chezmoi into `~/.local/bin`, applies all dotfiles,
    installs every tool in the mise config, and creates `~/.config/secrets/`.
+   It prompts for machine type (personal/work); for non-interactive runs
+   (containers, CI) set `CHEZMOI_MACHINE_TYPE=personal` (or `work`) instead.
 
 3. Finish by hand (one-time, per machine):
 
@@ -78,6 +83,21 @@ Languages work the same way: mise installs the toolchain (`go`, `rust`,
 `node`), and binaries you build land in `~/go/bin` or `~/.cargo/bin`
 (both on PATH). Per-project tool versions: `mise use <tool>@<version>`
 inside the project (replaces devenv/direnv).
+
+## Testing
+
+`./test/smoke.sh` builds a bare `debian:latest` image containing only the
+documented prerequisites (fish, git, curl, libatomic1), runs `bootstrap.sh`
+inside it, and verifies the results: dotfiles applied, fish starts and loads
+67+ abbreviations, mise tools installed, templated config rendered.
+
+The repo is volume-mounted and used directly as the chezmoi source
+(`DOTFILES_LOCAL_SOURCE`), so uncommitted changes are tested. To test the
+true onboarding path (clone from origin), comment out the
+`DOTFILES_LOCAL_SOURCE` env in `test/smoke.sh` after pushing.
+
+Machine type is forced to `personal` via `CHEZMOI_MACHINE_TYPE` (no TTY in
+containers); set `work` to test work-machine rendering.
 
 ## Extending
 

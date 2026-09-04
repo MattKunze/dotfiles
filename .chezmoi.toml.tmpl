@@ -1,4 +1,10 @@
-{{- $machine_type := promptStringOnce . "machine_type" "Machine type [personal/work]" "personal" -}}
+{{- $machine_type := env "CHEZMOI_MACHINE_TYPE" -}}
+{{- if not $machine_type -}}
+{{-   $machine_type = promptStringOnce . "machine_type" "Machine type [personal/work]" "personal" -}}
+{{- end -}}
+{{- if and (ne $machine_type "personal") (ne $machine_type "work") -}}
+{{-   fail (printf "invalid machine_type %q: must be personal or work" $machine_type) -}}
+{{- end -}}
 
 [data]
     machine_type = {{ $machine_type | quote }}

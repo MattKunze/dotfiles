@@ -1,0 +1,38 @@
+# Global mise config: https://mise.jdx.dev/configuration.html
+#
+# - Tools listed here are installed for your whole account via `mise install`
+#   and live on PATH everywhere (`mise activate` in fish handles this).
+# - Per-project tools: run `mise use <tool>` inside a project to create/extend
+#   its own mise.toml (replaces devenv/direnv).
+# - go/rust toolchains come from here too; binaries you build/install
+#   (cargo install, go install) land in ~/.cargo/bin and ~/go/bin, both on PATH.
+
+[tools]
+# toolchains
+go = "latest"
+node = "latest"
+# rust = "latest"   # uncomment when you need the rust toolchain on a machine
+
+# shell environment
+starship = "latest"
+zoxide = "latest"
+atuin = "latest"
+
+# core CLIs
+eza = "latest"
+fd = "latest"
+ripgrep = "latest"
+bat = "latest"
+jq = "latest"
+gh = "latest"
+uv = "latest"
+
+# editors / vcs
+neovim = "latest"
+jj = "latest"
+
+# mise internals (task/completion support)
+usage = "latest"
+
+# To add more tools, run `mise registry | grep <name>` to find the backend,
+# add it here (or `mise use -g <tool>` which edits this file), then `mise install`.

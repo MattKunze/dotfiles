@@ -1,0 +1,5 @@
+{{- $id := .personal.git -}}
+{{- if .is_work }}{{ $id = .work.git }}{{ end -}}
+[user]
+name = {{ $id.name | quote }}
+email = {{ $id.email | quote }}

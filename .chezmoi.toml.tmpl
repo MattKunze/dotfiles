@@ -1,0 +1,5 @@
+{{- $machine_type := promptStringOnce . "machine_type" "Machine type [personal/work]" "personal" -}}
+
+[data]
+    machine_type = {{ $machine_type | quote }}
+    is_work = {{ eq $machine_type "work" }}

@@ -36,7 +36,7 @@ Dotfiles managed by [chezmoi](https://www.chezmoi.io), tools managed by
    chsh -s "$(command -v fish)"   # make fish your login shell
    gh auth login
    atuin login                    # or: atuin register
-   opencode                       # first-run setup
+   opencode2                      # OpenCode 2 (beta), first-run setup
    ```
 
    Machine-specific keys/env go in `~/.config/secrets/*.fish` (fish syntax,

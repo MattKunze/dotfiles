@@ -31,6 +31,9 @@ uv = "latest"
 neovim = "latest"
 jj = "latest"
 
+# AI coding agent — OpenCode 2 (beta). Installs the `opencode2` binary.
+"npm:@opencode-ai/cli" = "beta"
+
 # mise internals (task/completion support)
 usage = "latest"
 

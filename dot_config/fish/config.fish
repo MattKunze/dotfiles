@@ -5,7 +5,6 @@ if status is-interactive
     # mise-managed tools + go/cargo toolchain binaries
     fish_add_path ~/.local/bin
     fish_add_path ~/.local/share/mise/shims
-    fish_add_path ~/.opencode/bin
     fish_add_path ~/go/bin
     fish_add_path ~/.cargo/bin
 

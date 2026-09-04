@@ -16,7 +16,7 @@ abbr -a j just
 abbr -a cat bat
 abbr -a cd z
 abbr -a find fd
-abbr -a oc opencode
+abbr -a oc opencode2
 abbr -a we watchexec
 
 abbr -a ll eza -l --icons --git

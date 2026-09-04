@@ -77,6 +77,6 @@ cat <<EOF
   - authenticate services as needed:
       gh auth login
       atuin login            (or: atuin register)
-      opencode               (first run does setup)
+      opencode2              (OpenCode 2 beta; first run does setup)
   - add secrets to ~/.config/secrets/*.fish
 EOF

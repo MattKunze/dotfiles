@@ -77,6 +77,7 @@ cat <<EOF
   - open a new fish shell
   - authenticate services as needed:
       gh auth login
+      tg auth login <handle>    # tangled.org (analogous to gh; OAuth flow)
       atuin login            (or: atuin register)
       opencode2              (OpenCode 2 beta; first run does setup)
       polytoken              (first run does setup)

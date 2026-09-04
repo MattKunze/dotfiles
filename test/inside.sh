@@ -68,6 +68,10 @@ grep -q "Matt Kunze" "$HOME/.config/git/config" || fail "git identity not render
 grep -q "home.shypan.st/atuin" "$HOME/.config/atuin/config.toml" || fail "atuin sync address not rendered"
 echo "ok: templated config rendered (personal)"
 
+# --- tg (tangled.org CLI, go backend build) resolves in fish
+fish -i -c 'tg --version' | grep -q "tg version" || fail "tg not installed/on PATH"
+echo "ok: tg installed"
+
 # --- warm-burnout theme external + symlinks
 [ -f "$HOME/.local/share/warm-burnout/opencode/warm-burnout.json" ] \
     || fail "warm-burnout external not fetched"

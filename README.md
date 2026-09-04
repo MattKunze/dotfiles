@@ -36,6 +36,7 @@ Dotfiles managed by [chezmoi](https://www.chezmoi.io), tools managed by
    ```sh
    chsh -s "$(command -v fish)"   # make fish your login shell
    gh auth login
+   tg auth login <handle>         # tangled.org CLI (OAuth flow, like gh)
    atuin login                    # or: atuin register
    opencode2                      # OpenCode 2 (beta), first-run setup
    polytoken                      # first-run setup
@@ -99,6 +100,16 @@ mise registry | grep <name>     # find its backend
 mise use -g <name>              # adds to ~/.config/mise/config.toml
 mise install
 ```
+
+Go-based CLIs without a registry entry can be built from source with the go
+backend — e.g. `tg` (tangled.org CLI, module `github.com/alyraffauf/tg`):
+
+```toml
+"go:github.com/alyraffauf/tg/cmd/tg" = "latest"   # in dot_config/mise/config.toml
+```
+
+`mise install` compiles it with the mise-managed go toolchain, exposes the
+binary via shims, and `mise upgrade` keeps it current.
 
 Languages work the same way: mise installs the toolchain (`go`, `rust`,
 `node`), and binaries you build land in `~/go/bin` or `~/.cargo/bin`

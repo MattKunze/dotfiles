@@ -27,6 +27,11 @@ jq = "latest"
 gh = "latest"
 uv = "latest"
 
+# tangled.org CLI (an analogue to gh; builds github.com/alyraffauf/tg from
+# source via the go backend, exposing the `tg` binary). Auth is a separate
+# step: tg auth login <handle>.
+"go:github.com/alyraffauf/tg/cmd/tg" = "latest"
+
 # editors / vcs
 neovim = "latest"
 jj = "latest"

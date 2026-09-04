@@ -107,7 +107,9 @@ by chezmoi as an external (`.chezmoiexternal.yaml`) into
 `chezmoi update` (weekly; force with `chezmoi update --refresh-externals`).
 Symlinks into it are managed like any other dotfile:
 
-- `~/.config/opencode/themes/warm-burnout.json`
+- `~/.config/opencode/themes/warm-burnout.json` (theme file, via external)
+- `~/.config/opencode/cli.json` (activates the theme + shared UI settings;
+  auth lives in the untracked `service.json`)
 - `~/.config/ghostty/themes/warm-burnout-{dark,light}` (ghostty config points
   at these via `theme = dark:warm-burnout-dark,light:warm-burnout-light`)
 

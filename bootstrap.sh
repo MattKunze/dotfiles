@@ -45,6 +45,18 @@ if ! command -v curl >/dev/null 2>&1; then
     exit 1
 fi
 
+# NixOS: mise tools install as precompiled glibc-linked binaries, which need
+# nix-ld to run. Without it, mise installs fail late with confusing errors.
+if grep -q '^ID=nixos$' /etc/os-release 2>/dev/null; then
+    if [ ! -e /lib64/ld-linux-x86-64.so.2 ] && [ ! -e /lib/ld-linux-aarch64.so.1 ]; then
+        echo "error: NixOS detected but nix-ld is not enabled." >&2
+        echo "  All mise tools are precompiled glibc binaries and need it to run." >&2
+        echo "  Add this to your NixOS configuration, rebuild, and re-run:" >&2
+        echo "    programs.nix-ld.enable = true;" >&2
+        exit 1
+    fi
+fi
+
 log "installing mise"
 if ! command -v mise >/dev/null 2>&1 && [ ! -x "$BIN_DIR/mise" ]; then
     curl -fsSL https://mise.run | MISE_INSTALL_PATH="$BIN_DIR/mise" sh

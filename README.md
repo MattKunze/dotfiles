@@ -13,6 +13,7 @@ Dotfiles managed by [chezmoi](https://www.chezmoi.io), tools managed by
    # Debian/Ubuntu: sudo apt install fish
    # Fedora:        sudo dnf install fish
    # Arch:          sudo pacman -S fish
+   # NixOS (configuration.nix): environment.systemPackages = [ pkgs.fish ];
    ```
 
 2. Clone and bootstrap:
@@ -24,6 +25,12 @@ Dotfiles managed by [chezmoi](https://www.chezmoi.io), tools managed by
 
    Debian/Ubuntu note: also `sudo apt install libatomic1` — the node binary
    needs it (preinstalled on macOS/Fedora/Arch equivalents).
+
+   NixOS note: enable nix-ld in your configuration first —
+   `programs.nix-ld.enable = true;`. All mise tools install as precompiled
+   glibc-linked binaries (the global mise config forces `all_compile = false`,
+   since building them from source needs a system toolchain NixOS doesn't
+   have), and nix-ld is what lets those binaries run.
 
    This installs mise + chezmoi into `~/.local/bin`, applies all dotfiles,
    installs polytoken (via a chezmoi `run_once` script) and every tool in the

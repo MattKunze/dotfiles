@@ -7,6 +7,14 @@
 # - go/rust toolchains come from here too; binaries you build/install
 #   (cargo install, go install) land in ~/.cargo/bin and ~/go/bin, both on PATH.
 
+# Explicitly use precompiled binaries everywhere. On NixOS (and Alpine) mise
+# implicitly defaults to all_compile=true, which compiles node/python/ruby/erlang
+# from source — that fails on a bare machine (no system gcc/make/python; node's
+# ./configure dies with "exec: python: not found"). Precompiled glibc binaries
+# need nix-ld on NixOS (see README onboarding step 1).
+[settings]
+all_compile = false
+
 [tools]
 # toolchains
 go = "latest"

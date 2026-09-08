@@ -96,6 +96,8 @@ grep -q "warm-burnout-dark" "$HOME/.config/ghostty/config" \
     || fail "ghostty not using warm-burnout theme"
 grep -q "font-family = Maple Mono NF" "$HOME/.config/ghostty/config" \
     || fail "ghostty font-family default not rendered"
+grep -q "config-file = ?$HOME/.config/secrets/ghostty.conf" "$HOME/.config/ghostty/config" \
+    || fail "ghostty machine-local include not rendered"
 echo "ok: warm-burnout theme external + symlinks"
 
 echo ""

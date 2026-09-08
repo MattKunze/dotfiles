@@ -73,7 +73,8 @@ dot_config/              files applied to ~/.config/
   fish/                  shell config; abbreviations in conf.d/abbr.fish
   git/, jj/              identity templated per machine (personal vs work)
   atuin/                 sync address templated per machine
-  ghostty/, gh/          terminal + github cli (ghostty font via secrets env)
+  ghostty/, gh/          terminal + github cli (machine overrides via
+                         secrets/ghostty.conf)
   polytoken/             sparse: config.yaml + themes/warm-burnout.yaml only
   mise/config.toml       global tool list (installed by mise install)
   mise/tasks/            mise tasks (mise run update, ...)
@@ -181,11 +182,13 @@ wire up another app, add a `symlink_` file under the right `dot_config/...`
 path pointing into `~/.local/share/warm-burnout/<app>/...` (see existing
 examples), then `chezmoi apply`.
 
-Ghostty's `font-family` is per-machine: it's templated from
-`$GHOSTTY_FONT_FAMILY`, which you set in `~/.config/secrets/*.fish`
-(`set -gx GHOSTTY_FONT_FAMILY "Pixel Code"`). Unset machines get the
-`Maple Mono NF` default. Note the value is read when `chezmoi apply` renders
-the template, so run `cma` from a fish shell (which sources `secrets/`).
+Ghostty's per-machine settings (e.g. the font) are not templated at all: the
+managed config ends with
+`config-file = ?~/.config/secrets/ghostty.conf` (rendered absolute). Ghostty
+processes included config last, so keys in that untracked file override the
+managed defaults, and the `?` keeps it optional — machines without the file
+use the defaults (font: Maple Mono NF). This keeps `chezmoi diff` clean no
+matter which shell renders the templates.
 
 ## Extending
 

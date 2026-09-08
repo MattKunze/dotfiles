@@ -1,9 +1,13 @@
 # Ghostty terminal config
 # https://ghostty.org/docs/config
 
-# Per-machine font: set GHOSTTY_FONT_FAMILY in ~/.config/secrets/*.fish (it is
-# read when `chezmoi apply` renders this template; falls back to Maple Mono NF).
-font-family = {{ env "GHOSTTY_FONT_FAMILY" | default "Maple Mono NF" }}
+# Machine-local overrides (font etc.) live in ~/.config/secrets/ghostty.conf
+# (untracked, created per machine — see ~/.config/secrets/README.md).
+# config-file keys are processed at the end and override everything above;
+# the ? prefix ignores the file when it doesn't exist.
+config-file = ?{{ .chezmoi.homeDir }}/.config/secrets/ghostty.conf
+
+font-family = Maple Mono NF
 font-size = 13
 minimum-contrast = 4.5
 shell-integration = fish

@@ -9,12 +9,20 @@ Use them for API keys, tokens, and machine-specific env (work proxies, etc.):
 ```fish
 # e.g. ~/.config/secrets/keys.fish
 set -gx OPENCODE_GO_API_KEY sk-...
-set -gx GHOSTTY_FONT_FAMILY "Pixel Code"   # ghostty font (read at `cma` time)
 
 # e.g. ~/.config/secrets/work.fish
 set -gx HTTP_PROXY http://proxy.example.com:8080
 set -gx HTTPS_PROXY http://proxy.example.com:8080
 set -gx NO_PROXY localhost,127.0.0.1
+```
+
+`ghostty.conf` (optional) is special: it isn't sourced by fish but included by
+the managed `~/.config/ghostty/config` (`config-file = ?…`). It holds
+machine-local ghostty overrides; the managed defaults apply when it's absent:
+
+```ini
+# e.g. ~/.config/secrets/ghostty.conf
+font-family = Pixel Code
 ```
 
 Later, these can migrate to first-class chezmoi secret management

@@ -1,0 +1,16 @@
+# Third-party assets fetched and refreshed by chezmoi (no git submodules).
+# `chezmoi update` clones once, then pulls when refreshPeriod elapses.
+# Force a refresh: chezmoi update --refresh-externals
+#
+# Note: chezmoi only pulls from whatever `origin` an existing checkout already
+# has — it does NOT notice when the url below changes. The
+# run_onchange_sync-warm-burnout-remote script repoints existing checkouts;
+# new machines clone straight from the url here. Both read it from
+# .chezmoidata.yaml (warm_burnout.url).
+.local/share/warm-burnout:
+    type: git-repo
+    url: {{ .warm_burnout.url | quote }}
+    refreshPeriod: 168h
+    pull:
+        args:
+            - --ff-only

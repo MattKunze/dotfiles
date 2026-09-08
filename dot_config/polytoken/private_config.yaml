@@ -1,0 +1,28 @@
+version: 3
+defaults:
+  full: opencode-go/glm-5.3-flash
+  mini: opencode-go/deepseek-v4-flash
+providers:
+  opencode-go:
+    kind:
+      type: catalog
+      name: ocgo-c
+    auth:
+      type: static_key
+      key: ${OPENCODE_GO_API_KEY}
+default_permission_matcher: autonomous
+autonomous_permission_matcher:
+  max_consecutive_denials: 3
+integrations:
+  search:
+    providers:
+      exa:
+        enabled: true
+        key: ${EXA_API_KEY}
+tui:
+  theme: auto
+  theme-file: $USER_DIRECTORY/themes/warm-burnout.yaml
+  alt-screen: auto
+  density: standard
+  show-all-thinking-blocks: false
+  show-system-reminders: false

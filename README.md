@@ -73,12 +73,16 @@ dot_config/              files applied to ~/.config/
   fish/                  shell config; abbreviations in conf.d/abbr.fish
   git/, jj/              identity templated per machine (personal vs work)
   atuin/                 sync address templated per machine
-  ghostty/, gh/          terminal + github cli
+  ghostty/, gh/          terminal + github cli (ghostty font via secrets env)
+  polytoken/             sparse: config.yaml + themes/warm-burnout.yaml only
   mise/config.toml       global tool list (installed by mise install)
   mise/tasks/            mise tasks (mise run update, ...)
   secrets/               README only — actual secret files are untracked
 run_onchange_install-packages.sh.tmpl   re-runs `mise install` on config change
-run_once_install-polytoken.sh           installs polytoken if missing (see below)
+run_onchange_sync-warm-burnout-remote.sh.tmpl   repoints the theme checkout
+                                        when warm_burnout.url changes
+run_once_install-polytoken.sh           installs polytoken if missing
+run_once_remove-opencode-v1-path.sh     one-time PATH cleanup (old opencode)
 bootstrap.sh             one-shot onboarding script (not applied to $HOME)
 ```
 
@@ -99,6 +103,14 @@ mise/chezmoi:
 
 Fish completions live in `~/.config/fish/completions/polytoken.fish` and fish
 loads them automatically.
+
+The config dir `~/.config/polytoken` is managed sparsely — only `config.yaml`
+and the `themes/warm-burnout.yaml` symlink are in chezmoi; polytoken's own
+churn (timestamped `config.yaml.*.bak` backups, `prompt_history/`) is
+untracked and listed in `.chezmoiignore` so it never sneaks in. If polytoken
+ever rewrites `config.yaml` (e.g. a config-version migration), `chezmoi diff`
+will show it — review and `chezmoi merge ~/.config/polytoken/config.yaml`
+instead of blindly applying, or you'd revert the migration.
 
 ## Adding a tool
 
@@ -141,24 +153,39 @@ containers); set `work` to test work-machine rendering.
 
 ## Theming
 
-The [warm-burnout](https://github.com/felipefdl/warm-burnout) theme is pulled
-by chezmoi as an external (`.chezmoiexternal.yaml`) into
-`~/.local/share/warm-burnout` — no submodules, and it refreshes with
-`chezmoi update` (weekly; force with `chezmoi update --refresh-externals`).
-Symlinks into it are managed like any other dotfile:
+The [warm-burnout](https://github.com/MattKunze/warm-burnout) theme (a fork of
+felipefdl/warm-burnout, with a polytoken platform added) is pulled by chezmoi
+as an external into `~/.local/share/warm-burnout` — no submodules, and it
+refreshes with `chezmoi update` (weekly; force with
+`chezmoi update --refresh-externals`). The checkout is a cache, not a working
+tree. Symlinks into it are managed like any other dotfile:
 
 - `~/.config/opencode/themes/warm-burnout.json` (theme file, via external)
 - `~/.config/opencode/cli.json` (activates the theme + shared UI settings;
   auth lives in the untracked `service.json`)
 - `~/.config/ghostty/themes/warm-burnout-{dark,light}` (ghostty config points
   at these via `theme = dark:warm-burnout-dark,light:warm-burnout-light`)
+- `~/.config/polytoken/themes/warm-burnout.yaml` (polytoken theme, referenced
+  by `theme-file` in `~/.config/polytoken/config.yaml`)
+
+The external's url lives in `.chezmoidata.yaml` (`warm_burnout.url`) so it's
+declared in one place: `.chezmoiexternal.yaml.tmpl` clones it on new
+machines, and `run_onchange_sync-warm-burnout-remote.sh` re-runs whenever the
+url changes and repoints the checkouts that already exist (chezmoi's git-repo
+externals just `git pull` from whatever origin a checkout already has — they
+never notice a url change on their own). Changing `warm_burnout.url` is
+therefore all it takes to switch forks everywhere on the next `chezmoi apply`.
 
 The upstream repo also ships themes for bat, eza, alacritty, and others — to
 wire up another app, add a `symlink_` file under the right `dot_config/...`
 path pointing into `~/.local/share/warm-burnout/<app>/...` (see existing
-examples), then `chezmoi apply`. To use a local fork instead of upstream,
-change the `url` in `.chezmoiexternal.yaml` and delete
-`~/.local/share/warm-burnout` before the next apply.
+examples), then `chezmoi apply`.
+
+Ghostty's `font-family` is per-machine: it's templated from
+`$GHOSTTY_FONT_FAMILY`, which you set in `~/.config/secrets/*.fish`
+(`set -gx GHOSTTY_FONT_FAMILY "Pixel Code"`). Unset machines get the
+`Maple Mono NF` default. Note the value is read when `chezmoi apply` renders
+the template, so run `cma` from a fish shell (which sources `secrets/`).
 
 ## Extending
 

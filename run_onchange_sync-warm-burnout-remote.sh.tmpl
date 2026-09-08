@@ -1,0 +1,39 @@
+#!/bin/sh
+# Keeps ~/.local/share/warm-burnout (the warm-burnout theme external) pointed
+# at the url declared in .chezmoidata.yaml (warm_burnout.url).
+#
+# chezmoi's git-repo externals clone once and afterwards only `git pull` from
+# whatever origin the checkout already has — they do NOT notice when the url
+# in .chezmoiexternal.yaml changes. This script's content is hashed by chezmoi
+# (hence run_onchange), so it re-runs whenever the url changes and repoints
+# existing checkouts; new machines clone from the right url to begin with and
+# this script exits early.
+#
+# The checkout is a chezmoi-managed cache, not a working tree: any local state
+# is reset to the fork's branch here, mirroring what a fresh clone would give.
+set -eu
+
+REPO="$HOME/.local/share/warm-burnout"
+URL={{ .warm_burnout.url | quote }}
+BRANCH={{ .warm_burnout.branch | quote }}
+
+# Fresh machine: the external just cloned it (from the right url) or it does
+# not exist yet — nothing to repoint.
+[ -d "$REPO/.git" ] || exit 0
+
+CURRENT="$(git -C "$REPO" remote get-url origin 2>/dev/null || true)"
+# Compare modulo a trailing .git (https://x/repo and https://x/repo.git are
+# the same GitHub repo) so equivalent urls don't trigger a needless reset.
+if [ "${CURRENT%.git}" = "${URL%.git}" ]; then
+    exit 0
+fi
+
+echo "==> warm-burnout origin is ${CURRENT:-<none>}; repointing to $URL"
+if [ -n "$CURRENT" ]; then
+    git -C "$REPO" remote set-url origin "$URL"
+else
+    git -C "$REPO" remote add origin "$URL"
+fi
+git -C "$REPO" fetch origin --prune
+git -C "$REPO" checkout -q "$BRANCH"
+git -C "$REPO" reset --hard "origin/$BRANCH"

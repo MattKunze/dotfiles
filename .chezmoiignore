@@ -1,2 +1,8 @@
 README.md
 bootstrap.sh
+
+# Polytoken's config dir is managed sparsely (config.yaml + the theme symlink);
+# these are polytoken-owned churn we never want to manage:
+.config/polytoken/*.bak          # timestamped config backups polytoken rotates
+.config/polytoken/prompt_history/
+.config/polytoken/prompt_history/**

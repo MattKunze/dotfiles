@@ -2,6 +2,14 @@
 # Machine-specific settings (machine type) live in ~/.config/chezmoi/chezmoi.toml,
 # created by .chezmoi.toml.tmpl on `chezmoi init`.
 
+# warm-burnout theme external. Used by .chezmoiexternal.yaml (the clone source)
+# and run_onchange_sync-warm-burnout-remote.sh (which repoints already-cloned
+# checkouts when this changes — chezmoi's git-repo externals don't do that on
+# their own). Change the url here to roll it out everywhere on the next apply.
+warm_burnout:
+  url: https://github.com/MattKunze/warm-burnout.git
+  branch: main
+
 personal:
   git:
     name: Matt Kunze

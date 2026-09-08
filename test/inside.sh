@@ -72,9 +72,20 @@ echo "ok: templated config rendered (personal)"
 fish -i -c 'tg --version' | grep -q "tg version" || fail "tg not installed/on PATH"
 echo "ok: tg installed"
 
+# --- polytoken config applied (sparse management: config + theme symlink only)
+[ -f "$HOME/.config/polytoken/config.yaml" ] || fail "polytoken config missing"
+[ -f "$(readlink -f "$HOME/.config/polytoken/themes/warm-burnout.yaml")" ] \
+    || fail "polytoken theme symlink broken"
+if "$HOME/.local/bin/chezmoi" managed | grep -Eq "polytoken/.*(bak|prompt_history)"; then
+    fail "polytoken churn unexpectedly managed"
+fi
+echo "ok: polytoken config + theme symlink"
+
 # --- warm-burnout theme external + symlinks
 [ -f "$HOME/.local/share/warm-burnout/opencode/warm-burnout.json" ] \
     || fail "warm-burnout external not fetched"
+[ -f "$HOME/.local/share/warm-burnout/polytoken/warm-burnout.yaml" ] \
+    || fail "warm-burnout polytoken theme missing from external"
 [ -f "$(readlink -f "$HOME/.config/opencode/themes/warm-burnout.json")" ] \
     || fail "opencode theme symlink broken"
 [ -f "$(readlink -f "$HOME/.config/ghostty/themes/warm-burnout-dark")" ] \
@@ -83,6 +94,8 @@ echo "ok: tg installed"
     || fail "ghostty light theme symlink broken"
 grep -q "warm-burnout-dark" "$HOME/.config/ghostty/config" \
     || fail "ghostty not using warm-burnout theme"
+grep -q "font-family = Maple Mono NF" "$HOME/.config/ghostty/config" \
+    || fail "ghostty font-family default not rendered"
 echo "ok: warm-burnout theme external + symlinks"
 
 echo ""

@@ -9,6 +9,7 @@ Use them for API keys, tokens, and machine-specific env (work proxies, etc.):
 ```fish
 # e.g. ~/.config/secrets/keys.fish
 set -gx OPENCODE_GO_API_KEY sk-...
+set -gx GHOSTTY_FONT_FAMILY "Pixel Code"   # ghostty font (read at `cma` time)
 
 # e.g. ~/.config/secrets/work.fish
 set -gx HTTP_PROXY http://proxy.example.com:8080

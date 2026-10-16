@@ -10,9 +10,9 @@ branch, its own dev stack (ports, containers, data), never contending with
 sibling stacks — so any number of features run concurrently. Skills are
 instructions, not scripts; the mise tasks do the work.
 
-Port reservation ranges are per project on the shared dev machine: check the
-project's AGENTS.md ("Port reservations") for which ranges belong to which
-project before debugging overlaps.
+Port reservation ranges are per project on the shared dev machine: check
+the project's AGENTS.md for which ranges belong to which project before
+debugging overlaps.
 
 ## Create
 

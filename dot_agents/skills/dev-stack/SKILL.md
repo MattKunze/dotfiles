@@ -18,8 +18,8 @@ skill carries only the shared lifecycle rules.
 
 1. **Check first**: run `mise run status`. Output is per-service, scoped to
    this checkout (ports come from this checkout's gitignored `.env`), and
-   identifies which checkout/compose project it is — use that to confirm
-   you're in the checkout you think. Exit code 0 means everything is up —
+   identifies which checkout it is — use that to confirm you're in the
+   checkout you think. Exit code 0 means everything is up —
    safe to assert on in scripts.
 2. **If the stack is up**: use it. Do not restart it, do not hunt ports.
 3. **If it's down**: run `mise run dev` (background it if you're driving a
@@ -30,10 +30,11 @@ skill carries only the shared lifecycle rules.
    documented in the project's AGENTS.md; `mise run dev` reconciles the
    checkout `.env` to the mode on every run.
 4. **Verify against the running checkout** using the checkout's own mise
-   verify tasks (`smoke`, `health`, `logs`, … — which tasks exist comes from
-   that project's AGENTS.md, not from this skill), and any `curl` probes
-   against the *actual* ports read from the checkout's `.env`. Never probe a
-   hardcoded `127.0.0.1:<default>` for a non-default checkout.
+   verify tasks (the tasks each project defines — which ones exist comes
+   from that project's AGENTS.md, not from this skill), and any `curl`
+   probes against the *actual* ports read from the checkout's `.env`.
+   Never probe a hardcoded `127.0.0.1:<default>` for a non-default
+   checkout.
 5. **When done**: leave the stack running unless asked to stop. If stopping,
    `mise run stop` in *that* checkout only — it is port-scoped (this
    checkout's compose project / listeners) and removes this checkout's dev
@@ -52,8 +53,9 @@ baked into its `.env` at creation.
 
 - Never grep processes to "find the port conflict" — ports are per-checkout
   in the gitignored `.env`.
-- A `DOWN` status after `dev` means: read the checkout's logs (its mise
-  `logs` task or `docker compose logs`), not reconfigure ports.
+- A `DOWN` status after `dev` means: read the checkout's own log sources
+  (its mise log task and/or the platform's log command), not reconfigure
+  ports.
 - If `status` shows a port occupied while the service behind it is DOWN, a
   stale listener from an interrupted run holds the port: `mise run stop` (or
   simply re-running `mise run dev`) clears the stale listener on *this

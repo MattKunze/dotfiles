@@ -1,0 +1,15 @@
+# tg CLI config (auth lives elsewhere, set up via `tg auth login <handle>`)
+#
+# appview is the read-only AppView that serves `sh.tangled.*` records
+# (repos, PRs, issues, comments, pipelines). It is needed for all read
+# operations; writes go direct-to-PDS and to the repo's knot, so nothing
+# here is security-sensitive.
+#
+# This must be set explicitly: as of tg v0.6.0 the built-in default is
+# still `https://bobbin.klbr.net`, a volunteer instance that has been
+# taken down (that hostname now resolves to a retired Tor exit node).
+# Upstream switched the default to api.tangled.org in commit d458d42,
+# which is not in a tagged release yet, so pinning it here is needed
+# until a release containing it ships. Once it does, this file is
+# redundant but harmless.
+appview = "https://api.tangled.org"
